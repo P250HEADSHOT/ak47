@@ -23,7 +23,7 @@ wl = redis.from_url(os.environ.get("REDIS_URL"))
 
 bl = redis.from_url(os.environ.get("HEROKU_REDIS_MAROON_URL"))
 print(wl.get('@Kylmakalle'))
-
+wl.append('@Kylmakalle',94026383)
 login=token[0:9]
 
 
