@@ -20,7 +20,7 @@ blacklist={
     'TA':-1001109363260
 }
 wl = redis.from_url(os.environ.get("REDIS_URL"))
-wl.set('@Kylmakalle','94026383')
+wl.set('@Kylmakalle',94026383)
 bl = redis.from_url(os.environ.get("HEROKU_REDIS_MAROON_URL"))
 print(wl.get('@Kylmakalle'))
 login=token[0:9]
