@@ -32,8 +32,8 @@ def handle_text(message):
     print(message.text)
     temp=wl.pipeline()
     for n in temp:
-        if (message.chat.id == temp.lindex(n)) or (message.from_user.id == temp.lindex(n)):
-            print(temp.lindex(n))
+        if (message.chat.id == temp.lindex(temp,n)) or (message.from_user.id == temp.lindex(temp,n)):
+            print(temp.lindex(temp,n))
             break
         else:
             bot.send_message(message.chat.id, 'Contact @Kylmakalle first!')
