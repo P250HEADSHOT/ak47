@@ -22,7 +22,7 @@ blacklist={
 wl = redis.from_url(os.environ.get("REDIS_URL"))
 wl.set('@Kylmakalle','94026383')
 bl = redis.from_url(os.environ.get("HEROKU_REDIS_MAROON_URL"))
-print(wl)
+wl.get('@Kylmakalle')
 login=token[0:9]
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
