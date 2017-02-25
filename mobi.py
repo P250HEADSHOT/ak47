@@ -40,15 +40,15 @@ def handle_text(message):
     if message.chat.type == 'private':
         print(login)
         if "/get_wl " + str(login) in message.text:
-            bot.reply_to(message, 'WHITELIST '+ str(wl.get()))
+            bot.reply_to(message, 'WHITELIST '+ str(wl.hgetall()))
         if "/add_wl " + str(login) in message.text:
             bot.reply_to(message, 'Добавление в WHITELIST, введите имя')
             def handle_text(message):
-                name=message.text
+                name = message.text
                 bot.reply_to(message, 'Добавление в WHITELIST, введите id')
                 def handle_text(message):
                     ident=message.text
-                    wl.set('name',ident)
+                    wl.hset(str(name),ident)
 
     if "Ассистент, тест" in message.text:
             bot.send_message(me,'TESTED!')
