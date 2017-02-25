@@ -31,11 +31,11 @@ login=token[0:9]
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
     print(message.text)
-    print(wl.llen(wl))
+    print(wl.llen())
     print(wl.lindex(wl,0))
     l=0
     n=-1
-    for n in range(wl.llen(wl)):
+    for n in range(wl.llen()):
         print(wl.lindex(wl,n))
         print('_____________________')
         print(wl.keys("*"))
