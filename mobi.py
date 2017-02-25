@@ -24,13 +24,19 @@ wl = redis.from_url(os.environ.get("REDIS_URL"))
 bl = redis.from_url(os.environ.get("HEROKU_REDIS_MAROON_URL"))
 print(wl.get('@Kylmakalle'))
 
-
-
 login=token[0:9]
+
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
     print(message.text)
-    legit_group(message)
+    def legit_group(message):
+        for n in wl:
+            if (message.chat.id == twoch[n]) or (message.from_user.id == wl[n]):
+                print(wl[n])
+                break
+            else:
+                bot.send_message(message.chat.id, 'Contact @Kylmakalle first!')
+                bot.leave_chat(message.chat.id)
     if message.chat.type == 'private':
         print(login)
         if "/get_wl " + str(login) in message.text:
@@ -47,14 +53,7 @@ def handle_text(message):
     if "Ассистент, тест" in message.text:
             bot.send_message(me,'TESTED!')
 
-def legit_group(message):
-    for n in twoch:
-        if (message.chat.id == twoch[n]) or (message.from_user.id == twoch[n]):
-            print(twoch[n])
-            break
-        else:
-            bot.send_message(message.chat.id,'Contact @Kylmakalle first!')
-            bot.leave_chat(message.chat.id)
+
 @bot.message_handler(content_types=['photo'])
 def handle_photos(message):
     print(message)
