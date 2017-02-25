@@ -23,6 +23,7 @@ wl = redis.from_url(os.environ.get("REDIS_URL"))
 
 bl = redis.from_url(os.environ.get("HEROKU_REDIS_MAROON_URL"))
 wl.set('@Kylmakalle',94026383)
+wl.set('test',-1001100823817)
 print(wl.get('@Kylmakalle'))
 login=token[0:9]
 
@@ -33,6 +34,7 @@ def handle_text(message):
     print(wl.llen(wl))
     print(wl.lindex(wl,0))
     l=0
+    n=-1
     for n in range(wl.llen(wl)):
         print(wl.lindex(wl,n))
         print('_____________________')
