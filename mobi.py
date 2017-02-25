@@ -22,7 +22,7 @@ blacklist={
 wl = redis.from_url(os.environ.get("REDIS_URL"))
 wl.set('@Kylmakalle',94026383)
 bl = redis.from_url(os.environ.get("HEROKU_REDIS_MAROON_URL"))
-print(wl.get('@Kylmakalle'))
+print(str(wl.get('@Kylmakalle')))
 login=token[0:9]
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
@@ -36,6 +36,8 @@ def handle_text(message):
             bot.leave_chat(message.chat.id)
     if message.chat.type == 'private':
         print(login)
+        if "/getwl2ch " + str(login) in message.text:
+            bot.reply_to(message, 'WHITELIST '+ str(wl.get()))
         if "/add2ch " + str(login) in message.text:
             bot.reply_to(message, 'Добавление id в WHITELIST, введите ID')
             def handle_text(message):
