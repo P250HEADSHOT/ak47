@@ -25,7 +25,11 @@ bl = redis.from_url(os.environ.get("HEROKU_REDIS_MAROON_URL"))
 print(wl.get('@Kylmakalle'))
 
 login=token[0:9]
-def legit_check(message):
+
+
+@bot.message_handler(content_types=['text'])
+def handle_text(message):
+    print(message.text)
     for n in wl:
         if (message.chat.id == twoch[n]) or (message.from_user.id == wl[n]):
             print(wl[n])
@@ -33,11 +37,6 @@ def legit_check(message):
         else:
             bot.send_message(message.chat.id, 'Contact @Kylmakalle first!')
             bot.leave_chat(message.chat.id)
-
-@bot.message_handler(content_types=['text'])
-def handle_text(message):
-    print(message.text)
-    legit_check(message)
     if message.chat.type == 'private':
         print(login)
         if "/get_wl " + str(login) in message.text:
