@@ -30,14 +30,13 @@ login=token[0:9]
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
     print(message.text)
-    temp = wl.pipeline()
     l=0
-    for n in temp:
-        print(temp.lindex(wl, n))
+    for n in range(wl.llen(wl)):
+        print(wl.lindex(wl,n))
         print('_____________________')
         print(wl.keys("*"))
-        if (message.chat.id == temp.lindex(wl,n)) or (message.from_user.id == temp.lindex(wl,n)):
-            print(temp.lindex(wl,n))
+        if (message.chat.id == wl.lindex(wl,n)) or (message.from_user.id == wl.lindex(wl,n)):
+            print(wl.lindex(wl,n))
             l=0
             break
         else:
