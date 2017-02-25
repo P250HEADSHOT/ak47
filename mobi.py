@@ -30,9 +30,10 @@ login=token[0:9]
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
     print(message.text)
-    for n in wl.llen():
-        if (message.chat.id == wl.lindex(n)) or (message.from_user.id == wl.lindex(n)):
-            print(wl.lindex(n))
+    temp=wl.pipeline()
+    for n in temp:
+        if (message.chat.id == temp.lindex(n)) or (message.from_user.id == temp.lindex(n)):
+            print(temp.lindex(n))
             break
         else:
             bot.send_message(message.chat.id, 'Contact @Kylmakalle first!')
@@ -40,15 +41,13 @@ def handle_text(message):
     if message.chat.type == 'private':
         print(login)
         if "/get_wl " + str(login) in message.text:
-            bot.reply_to(message, 'WHITELIST '+ str(wl.hgetall()))
+            bot.reply_to(message, 'WHITELIST '+ str(temp.hgetall()))
         if "/add_wl " + str(login) in message.text:
             bot.reply_to(message, 'Добавление в WHITELIST, введите имя')
             def handle_text(message):
-                name = message.text
-                bot.reply_to(message, 'Добавление в WHITELIST, введите id')
-                def handle_text(message):
-                    ident=message.text
-                    wl.hset(str(name),ident)
+                name = (message.text).split(' ')
+                ident=(message.text).rsplit(' ')
+                temp.hset(str(name),ident)
 
     if "Ассистент, тест" in message.text:
             bot.send_message(me,'TESTED!')
