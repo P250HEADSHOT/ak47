@@ -29,14 +29,13 @@ login=token[0:9]
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
     print(message.text)
-    def legit_group(message):
-        for n in wl:
-            if (message.chat.id == twoch[n]) or (message.from_user.id == wl[n]):
-                print(wl[n])
-                break
-            else:
-                bot.send_message(message.chat.id, 'Contact @Kylmakalle first!')
-                bot.leave_chat(message.chat.id)
+    #for n in wl:
+     #   if (message.chat.id == twoch[n]) or (message.from_user.id == wl[n]):
+      #      print(wl[n])
+       #     break
+        #else:
+         #   bot.send_message(message.chat.id, 'Contact @Kylmakalle first!')
+          #  bot.leave_chat(message.chat.id)
     if message.chat.type == 'private':
         print(login)
         if "/get_wl " + str(login) in message.text:
