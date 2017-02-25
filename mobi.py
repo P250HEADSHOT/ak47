@@ -30,9 +30,9 @@ login=token[0:9]
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
     print(message.text)
-    for n in wl:
-        if (message.chat.id == twoch[n]) or (message.from_user.id == wl[n]):
-            print(wl[n])
+    for n in wl.llen():
+        if (message.chat.id == wl.lindex(n)) or (message.from_user.id == wl.lindex(n)):
+            print(wl.lindex(n))
             break
         else:
             bot.send_message(message.chat.id, 'Contact @Kylmakalle first!')
