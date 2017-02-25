@@ -32,6 +32,8 @@ def handle_text(message):
     print(message.text)
     temp = wl.pipeline()
     for n in temp:
+        print(temp.lindex(wl, n))
+        print(wl.keys("*"))
         if (message.chat.id == temp.lindex(wl,n)) or (message.from_user.id == temp.lindex(wl,n)):
             print(temp.lindex(wl,n))
             break
