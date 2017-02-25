@@ -31,16 +31,21 @@ login=token[0:9]
 def handle_text(message):
     print(message.text)
     temp = wl.pipeline()
+    l=0
     for n in temp:
         print(temp.lindex(wl, n))
         print('_____________________')
         print(wl.keys("*"))
         if (message.chat.id == temp.lindex(wl,n)) or (message.from_user.id == temp.lindex(wl,n)):
             print(temp.lindex(wl,n))
+            l=0
             break
         else:
-            bot.send_message(message.chat.id, 'Contact @Kylmakalle first!')
-            bot.leave_chat(message.chat.id)
+            l=1
+    if (l==1):
+        bot.send_message(message.chat.id, 'Contact @Kylmakalle first!')
+        bot.leave_chat(message.chat.id)
+
     if message.chat.type == 'private':
         print(login)
         if "/get_wl " + str(login) in message.text:
@@ -63,8 +68,8 @@ def handle_photos(message):
         forwared = message.forward_from_chat.id
         if not (message.chat.type == 'private'):
             #Admins = bot.get_chat_administrators(message.chat.id)
-            #for i in range(len(list(Admins))):
-             #   pprint(Admins)
+            #for i in (list(Admins):
+             #   pprint(Admins[i])
                # if 'id' in Admins[i]['user'] != message.from_user.id:
                 for k in blacklist:
                     print(blacklist[k])
