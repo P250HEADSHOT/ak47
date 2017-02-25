@@ -19,7 +19,8 @@ twoch={
 blacklist={
     'TA':-1001109363260
 }
-r = redis.from_url(os.environ.get("REDIS_URL"))
+wl = redis.from_url(os.environ.get("REDIS_URL"))
+bl = redis.from_url(os.environ.get("HEROKU_REDIS_MAROON_URL"))
 login=token[0:9]
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
