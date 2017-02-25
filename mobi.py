@@ -22,8 +22,8 @@ blacklist={
 wl = redis.from_url(os.environ.get("REDIS_URL"))
 
 bl = redis.from_url(os.environ.get("HEROKU_REDIS_MAROON_URL"))
+wl.set('@Kylmakalle',94026383)
 print(wl.get('@Kylmakalle'))
-wl.append('@Kylmakalle',94026383)
 login=token[0:9]
 
 
@@ -33,6 +33,7 @@ def handle_text(message):
     temp = wl.pipeline()
     for n in temp:
         print(temp.lindex(wl, n))
+        print('_____________________')
         print(wl.keys("*"))
         if (message.chat.id == temp.lindex(wl,n)) or (message.from_user.id == temp.lindex(wl,n)):
             print(temp.lindex(wl,n))
