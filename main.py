@@ -6,15 +6,15 @@ import urllib
 import urllib2
 
 # for sending images
-from PIL import Image
-import multipart
+#from PIL import Image
+#import multipart
 
 # standard app engine imports
 from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
 import webapp2
 
-TOKEN = 'YOUR_BOT_TOKEN_HERE'
+TOKEN = '162565626:AAEAjizdFQx6SPNjLc9lB3SbDnfL4MAdL1w'
 
 BASE_URL = 'https://api.telegram.org/bot' + TOKEN + '/'
 
